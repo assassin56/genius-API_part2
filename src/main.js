@@ -12,7 +12,7 @@ $(document).ready(function () {
 
   (async () => {
     let Genius = new Genius();
-    const response = await Genius.getArtistbySong(song);
+    const response = await Genius.getAPI(song);
     getElements(response);
   })();
 

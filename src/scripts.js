@@ -1,7 +1,7 @@
 // Business Logic
 
 export class Genius {
-  // searchInput = "beatles";
+ 
   async getAPI() {
     try {
       let response = await fetch(`http://api.genius.com/search?q=${searchInput}&access_token=${process.env.API_KEY}`);
@@ -16,7 +16,7 @@ export class Genius {
       // console.log(jsonResponse);
       return jsonResponse;
     } catch(error) {
-      return false;
+      return false; // or error message?
     }
   }
 }
