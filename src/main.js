@@ -1,10 +1,14 @@
+// UI Logic
+
 import { Genius } from './scripts.js';
 // import $ from 'jquery';
 
 
 $(document).ready(function () {
-  const song = $('#artist').val();
-  $('#song').val("");
+
+  $('#songTitle').click(function() {
+  const song = $('#songTitle').val();
+  $('#songTitle').val("");
 
   (async () => {
     let Genius = new Genius();
@@ -14,12 +18,13 @@ $(document).ready(function () {
 
   function getElements(response) {
     if (response) {
-      $('.showArtist').text('The Artist for ${song} is ${response.artist}%');
+      $('.showArtist').text('The Artist for ${searchInput} is ${response.hit.primary_artist.name}%');
     } else {
       $('.showArtist').text('There was an error handling your request');
     }
   }
 
+});
 });
 
 

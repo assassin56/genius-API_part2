@@ -1,3 +1,5 @@
+// Business Logic
+
 export class Genius {
   // searchInput = "beatles";
   async getAPI() {
