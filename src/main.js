@@ -1,30 +1,37 @@
 // UI Logic
 
 import { Genius } from './scripts.js';
-// import $ from 'jquery';
+import $ from 'jquery';
 
 
 $(document).ready(function () {
 
-  $('#songTitle').click(function() {
-  const song = $('#songTitle').val();
-  $('#songTitle').val("");
 
-  (async () => {
-    let Genius = new Genius();
-    const response = await Genius.getAPI(song);
-    getElements(response);
-  })();
+  $('#songTitle').submit(function (event) {
+    event.preventDefault();
+    const song = $('#songInput').val();
+    console.log(song);
+    // $('#songInput').val("");
 
-  function getElements(response) {
-    if (response) {
-      $('.showArtist').text('The Artist for ${searchInput} is ${response.hit.primary_artist.name}%');
-    } else {
-      $('.showArtist').text('There was an error handling your request');
+
+    (async () => {
+      let myGenius = new Genius(); 
+      const response = await myGenius.getAPI(song);
+      getElements(response);
+    })();
+
+    function getElements(response) {
+      if (response) {
+        // console.table(response.response.hits[0].result.primary_artist);
+       
+        $('.showArtist').text(`The Artist for "${song}" is ${response.response.hits[0].result.primary_artist.name}`);
+      } else {
+        $('.showArtist').text('There was an error handling your request');
+     
     }
   }
 
-});
+  });
 });
 
 
